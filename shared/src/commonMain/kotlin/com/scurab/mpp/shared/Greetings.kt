@@ -1,6 +1,4 @@
-expect class Platform() {
-    fun name() : String
-}
+package com.scurab.mpp.shared
 
 class Greetings {
     fun greet() = Platform().name()
