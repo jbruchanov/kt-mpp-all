@@ -1,4 +1,4 @@
-package com.scurab.mpp.shared
+package com.scurab.mpp.jvm
 
 import org.junit.jupiter.api.Test
 

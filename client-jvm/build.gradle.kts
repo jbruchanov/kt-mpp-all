@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    application
 }
 
 group = "me.scurab"
@@ -19,4 +20,16 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.create<Jar>("assembleDistFatJar") {
+    manifest {
+        attributes["Main-Class"] = "com.scurab.mpp.jvm.AppKt"
+    }
+    group = "build"
+    archiveBaseName.set(project.name)
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    with(tasks["jar"] as CopySpec)
 }
